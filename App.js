@@ -27,11 +27,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        // screenOptions={{h}}
-        initialRouteName='Home'
+        screenOptions={{headerShown:false}}
+        initialRouteName='HomeScreen'
       >
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen}/>
+        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
