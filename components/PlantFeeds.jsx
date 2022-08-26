@@ -72,7 +72,6 @@ const PlantFeedItem = ()=>{
                         <Icon
                             name='bookmark'
                             type='material'
-                            color={COLORS.dark}
                             iconStyle={{
                                 color: COLORS.white,
                                 fontFamily: FONTS.light,
