@@ -69,7 +69,7 @@ const PlantFeedItem = ()=>{
 
                     <View
                         style={{
-                            backgroundColor: COLORS.secondary,
+                            backgroundColor: COLORS.transluscent,
                             padding:3,
                             borderRadius:6,
                         }}

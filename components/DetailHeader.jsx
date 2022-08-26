@@ -4,7 +4,7 @@ import { Icon } from '@rneui/themed';
 import {useNavigation} from '@react-navigation/core';
 
 
-import { FONTS, COLORS, FONT_SIZES } from '../constants';
+import { COLORS, FONT_SIZES } from '../constants';
 
 const DetailHeader = () => {
     const navigation = useNavigation();

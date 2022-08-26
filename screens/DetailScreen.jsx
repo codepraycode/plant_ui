@@ -152,7 +152,7 @@ const DetailScreen = () => {
 
                         <TouchableOpacity
                             style={{
-                                backgroundColor: COLORS.secondary,
+                                backgroundColor: COLORS.deepGray,
                                 padding: 3,
                                 borderRadius: 5,
                             }}

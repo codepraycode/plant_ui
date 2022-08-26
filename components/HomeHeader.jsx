@@ -35,12 +35,14 @@ const HomeHeader = () => {
             <SearchBar
                 containerStyle={styles.searchContainer}
                 inputContainerStyle={styles.searchInputContainer}
+                inputStyle={styles.searchInputStyle}
                 // lightTheme={true}
                 placeholder="Type Here..."
                 onChangeText={() => console.log("updateSearch")}
                 // value={"search"}
                 // showCancle={false}
                 round={true}
+                
             />
 
 
@@ -87,5 +89,11 @@ const styles = StyleSheet.create({
         backgroundColor:COLORS.white,
         borderWidth:1,
         borderBottomWidth: 1,
+        height:45,
+        borderRadius:10,
+    },
+    searchInputStyle:{
+        fontSize:FONT_SIZES.font,
+        fontFamily:FONTS.light,
     }
 })

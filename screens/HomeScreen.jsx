@@ -20,7 +20,7 @@ const HomeScreen = () => {
                     name={name}
                     type={type}
                     iconStyle={{
-                        color: focused ? COLORS.primary : COLORS.secondary,
+                        color: focused ? COLORS.primary : COLORS.gray,
                         // fontFamily: FONTS.light,
                         fontSize: size,
 
@@ -28,6 +28,7 @@ const HomeScreen = () => {
                 />
             },
             tabBarActiveTintColor: COLORS.primary,
+            tabBarInactiveTintColor: COLORS.gray,
             tabBarStyle:{
                 // backgroundColor:'red',
                 // paddingVertical:10,
