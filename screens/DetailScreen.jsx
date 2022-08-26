@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React,{useState} from 'react';
 import { AirbnbRating, Button, Icon } from "@rneui/themed";
 
 import DetailHeader from '../components/DetailHeader';
@@ -8,7 +8,20 @@ import { FONTS, FONT_SIZES, COLORS } from '../constants';
 
 
 const DetailScreen = () => {
-    
+    const [amount, setAmount] = useState(1);
+
+    const handleAmountChange = (v) =>{
+        
+        setAmount( ()=> {
+            const vv = amount + Number(v);
+
+            if (vv < 1){
+                return 1;
+            }
+
+            return vv;
+        });
+    }
     return (
         <>
             <DetailHeader/>
@@ -129,7 +142,7 @@ const DetailScreen = () => {
                                 borderRadius:5,
                             }}
 
-                            onPress={() => { console.log("increase!") }}
+                            onPress={() => { handleAmountChange(1) }}
                         >
                             <Icon
                                 type="antdesign"
@@ -147,7 +160,7 @@ const DetailScreen = () => {
                                 fontSize: FONT_SIZES.font + 2,
                             }}
                         >
-                            1
+                            {amount}
                         </Text>
 
                         <TouchableOpacity
@@ -157,7 +170,7 @@ const DetailScreen = () => {
                                 borderRadius: 5,
                             }}
 
-                            onPress={() => { console.log("decrease!") }}
+                            onPress={() => { handleAmountChange(-1) }}
                         >
                             <Icon
                                 type="antdesign"

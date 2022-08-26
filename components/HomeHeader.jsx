@@ -1,11 +1,14 @@
-import { View, Text, StyleSheet} from 'react-native'
-import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import React,{createRef, useState}from 'react';
 import { Icon, SearchBar } from '@rneui/themed';
 
 import { FONTS, COLORS, FONT_SIZES } from '../constants';
 import CategoryTab from './CategoryTab';
 
 const HomeHeader = () => {
+    let searchRef = createRef();
+    const [searchValue, setSearchValue] = useState('')    
+
     return (
         <View style={styles.headerContainer}>
 
@@ -21,13 +24,13 @@ const HomeHeader = () => {
                     </View>
                 </View>
 
-                <View style={{paddingRight:10,paddingTop:10}}>
+                <TouchableOpacity style={{paddingRight:10,paddingTop:10}}>
                     <Icon
                         name='bell'
                         type='octicon'
                         color={COLORS.dark}
                     />
-                </View>
+                </TouchableOpacity>
                 
             </View>
 
@@ -37,11 +40,14 @@ const HomeHeader = () => {
                 inputContainerStyle={styles.searchInputContainer}
                 inputStyle={styles.searchInputStyle}
                 // lightTheme={true}
-                placeholder="Type Here..."
-                onChangeText={() => console.log("updateSearch")}
-                // value={"search"}
+                value={searchValue}
+                onChangeText={(txt)=>setSearchValue(txt)}
                 // showCancle={false}
                 round={true}
+                ref={search => searchRef = search}
+                placeholder={"Search plant"}
+                onClear={()=>setSearchValue('')}
+                // onCancel={()=>searchRef.blur()}
                 
             />
 
