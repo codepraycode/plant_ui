@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, FlatList, ActivityIndicator, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@rneui/themed';
@@ -10,12 +10,17 @@ import FocusedStatusBar from './FocusedStatusBar';
 import HomeHeader from './HomeHeader';
 
 const PlantFeedItem = ()=>{
+    const navigation = useNavigation();
     return(
-        <View style={{
-            width: 150, //backgroundColor:'red',
-            position: 'relative', //borderRadius:10,
-            margin:15,
-        }}>
+        <TouchableOpacity 
+            style={{
+                width: 150, //backgroundColor:'red',
+                position: 'relative', //borderRadius:10,
+                margin:15,
+            }}
+
+            onPress={() => { navigation.navigate("DetailsScreen",{name:"A sample plant"})}}
+        >
 
             <View
                 
@@ -104,7 +109,7 @@ const PlantFeedItem = ()=>{
 
                 }}>Lorem ipsum dolor sit amet, con...</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
