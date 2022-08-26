@@ -7,7 +7,11 @@ import DetailHeader from '../components/DetailHeader';
 import { FONTS, FONT_SIZES, COLORS } from '../constants';
 
 
-const DetailScreen = () => {
+const DetailScreen = ({route}) => {
+
+    // console.log(route);
+    const {plant} = route.params;
+
     const [amount, setAmount] = useState(1);
 
     const handleAmountChange = (v) =>{
@@ -35,7 +39,7 @@ const DetailScreen = () => {
                     }}
                 >
                     <Image
-                        source={{ uri: 'https://images.unsplash.com/photo-1599009944474-5bc0ff20db85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' }}
+                        source={{ uri: plant?.image_url }}
                         // containerStyle={styles.imageContainer}
                         // PlaceholderContent={<ActivityIndicator/>}
                         resizeMode={"center"}
@@ -64,7 +68,7 @@ const DetailScreen = () => {
                                 fontSize:FONT_SIZES.large,
                             }}
                         >
-                            Plant Name
+                            {plant?.name}
                         </Text>
 
                         <Text
@@ -90,7 +94,7 @@ const DetailScreen = () => {
                             fontSize: FONT_SIZES.font,
                         }}
                     >
-                        $120.00
+                        {plant?.price}
                     </Text>
 
                 </View>

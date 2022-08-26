@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
     },
     header:{
         paddingHorizontal:10,
-        paddingTop: 25,
-        paddingBottom: 20,
+        paddingTop: 20,
+        paddingBottom: 10,
         flexDirection:'row',
         alignItems:'stretch',
         justifyContent:'space-between',

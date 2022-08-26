@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, FlatList, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@rneui/themed';
@@ -9,8 +9,37 @@ import { FONTS, COLORS, FONT_SIZES } from '../constants';
 import FocusedStatusBar from './FocusedStatusBar';
 import HomeHeader from './HomeHeader';
 
-const PlantFeedItem = ()=>{
+
+const data = [
+    {
+        id:1,
+        name:"Alice Plant",
+        image_url:"https://images.pexels.com/photos/13242090/pexels-photo-13242090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        price:"$100.00",
+    },
+    {
+        id: 2,
+        name: "Cactus Plant",
+        image_url: "https://images.pexels.com/photos/1903965/pexels-photo-1903965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        price: "$150.00",
+    },
+    {
+        id: 3,
+        name: "Snake Plant",
+        image_url: "https://images.pexels.com/photos/9707479/pexels-photo-9707479.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        price: "$120.00",
+    },
+    {
+        id: 4,
+        name: "Fiddle Plant",
+        image_url: "https://images.pexels.com/photos/7084309/pexels-photo-7084309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        price: "$50.00",
+    }
+];
+
+const PlantFeedItem = ({plant})=>{
     const navigation = useNavigation();
+    const { name, image_url, price } = plant;
     return(
         <TouchableOpacity 
             style={{
@@ -19,14 +48,14 @@ const PlantFeedItem = ()=>{
                 margin:15,
             }}
 
-            onPress={() => { navigation.navigate("DetailsScreen",{name:"A sample plant"})}}
+            onPress={() => { navigation.navigate("DetailsScreen", { plant })}}
         >
 
             <View
                 
             >
                 <Image
-                    source={{ uri: 'https://images.unsplash.com/photo-1599009944474-5bc0ff20db85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' }}
+                    source={{ uri: image_url }}
                     // containerStyle={styles.imageContainer}
                     // PlaceholderContent={<ActivityIndicator/>}
                     resizeMode={"cover"}
@@ -63,7 +92,7 @@ const PlantFeedItem = ()=>{
                                 fontSize:FONT_SIZES.small
                             }}
                         >
-                            $100.00
+                            {price}
                         </Text>
                     </View>
 
@@ -99,7 +128,7 @@ const PlantFeedItem = ()=>{
                         marginTop:10,
                     }}
                 >
-                    Plant Name
+                    {name}
                 </Text>
 
                 <Text style={{ 
@@ -118,20 +147,20 @@ const PlantFeeds = () => {
     return (
         <SafeAreaView style={styles.container}>
             
-            <FocusedStatusBar background={COLORS.primary}/>
+            <FocusedStatusBar backgroundColor={COLORS.white} barStyle={"dark-content"} translucent={false}/>
 
             {/* <Text style={{ fontFamily: FONTS.regular }}>HomeScreen</Text> */}
             {/* Feed Lists */}
             <View>
                 <FlatList
-                    data={[1,2,3,4,5]}
+                    data={data}
                     numColumns={2}
                     renderItem={
                         ({item})=>{
-                            return <PlantFeedItem/>;
+                            return <PlantFeedItem plant={item}/>;
                         }
                     }
-                    keyExtractor={(item,i)=>i}
+                    keyExtractor={(item)=>item.id}
                     showsVerticalScrollIndicator={false}
                     ListHeaderComponent={<HomeHeader/>}
                 />

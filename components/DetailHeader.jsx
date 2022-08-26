@@ -5,12 +5,14 @@ import {useNavigation} from '@react-navigation/core';
 
 
 import { COLORS, FONT_SIZES } from '../constants';
+import FocusedStatusBar from './FocusedStatusBar';
 
 const DetailHeader = () => {
     const navigation = useNavigation();
 
     return (
         <View style={styles.headerContainer}>
+            <FocusedStatusBar backgroundColor={COLORS.white} barStyle={"dark-content"} translucent={false} />
 
             <TouchableOpacity
                 onPress={() => navigation.goBack()}
